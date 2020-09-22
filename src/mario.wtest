@@ -1,0 +1,29 @@
+import mario.*
+import wollok.game.*
+
+describe "tests de mario" {
+
+const moneda1 = new Moneda(valor = 1)
+const moneda2 = new Moneda(valor = 5)
+const moneda3 = new Moneda(valor = 10)
+
+fixture {
+	game.addVisual(moneda1)
+	game.addVisual(moneda2)
+	game.addVisual(moneda3)
+	
+}
+
+test "mario agarra monedas " {
+	
+	
+	mario.agarrar(moneda1)
+	mario.agarrar(moneda2)
+	mario.agarrar(moneda3)
+	assert.equals(16, mario.monedas())
+
+}
+
+
+
+}

@@ -1,0 +1,7 @@
+import mario.*
+
+program abc {
+
+	juego.iniciar()
+
+}
