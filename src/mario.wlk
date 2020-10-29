@@ -45,7 +45,7 @@ object juego {
 		game.boardGround("FondoMario.jpg")
 		game.addVisualCharacter(mario)
 		
-		keyboard.space().onPressDo{mario.saltar()}
+		keyboard.s().onPressDo{mario.saltar()}
 		keyboard.enter().onPressDo{game.say(mario, "tengo " + mario.monedas().toString() + " monedas!!!")}
 //		keyboard.x().onPressDo{game.stop()}
 		
