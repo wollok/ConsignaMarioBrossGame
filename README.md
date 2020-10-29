@@ -6,10 +6,9 @@
 
 **Forma de uso**
 
--Mover a Mario con las flechas del teclado y pasar por encima de las monedas para juntarlas 
--Presionar <Espacio> para saltar
--Presionar <Enter> para ver cuantas monedas juntó
--Presionar <x> para salir
+- Mover a Mario con las flechas del teclado y pasar por encima de las monedas para juntarlas 
+- Presionar tecla "s" para saltar
+- Presionar tecla "Enter" para ver cuantas monedas juntó
 
 .
 
@@ -59,17 +58,16 @@ Monedas puede haber muchas, los valores posibles son $1, $5 y $10.
 **Saltos**
 
 *onPressDo(acccion), schedule(tiempo, accion)*
-- Permitir interactuar con el teclado, de manera que al presionar una tecla, Mario salte una par de casillas y enseguida vuelva a caer()
+- Permitir interactuar con el teclado, de manera que al presionar una tecla, Mario salte una par de casillas y enseguida vuelva a caer.
 
 .
 
 **El tablero de juego**
 
-*heigth(celdas), width(celdas), title(descripcion), say(visual,leyenda), stop()*
+*heigth(celdas), width(celdas), title(descripcion), say(visual,leyenda)*
 
 - Ampliar el tamaño de la pantalla, agregar una imagen de fondo, colocar un nombre al juego. 
 - Hacer que cuando se presiona una tecla, Mario informe cuánto tiene de monedas.
-- Agregar una tecla para terminar el juego.
 
 .
 
@@ -98,9 +96,8 @@ object juego {
 		game.boardGround("FondoMario.jpg")
 		game.addVisualCharacter(mario)
 		
-		keyboard.space().onPressDo{mario.saltar()}
+		keyboard.s().onPressDo{mario.saltar()}
 		keyboard.enter().onPressDo{game.say(mario, "tengo " + mario.monedas().toString() + " monedas!!!")}
-		keyboard.x().onPressDo{game.stop()}
 		
 		game.onTick(1000, "aparece moneda",{self.aparecerMoneda()})
 		game.onCollideDo(mario,{moneda => mario.agarrar(moneda)} )
