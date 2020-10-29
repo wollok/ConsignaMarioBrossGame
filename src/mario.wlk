@@ -50,6 +50,7 @@ object juego {
 		game.addVisualCharacter(mario)
 		
 		keyboard.space().onPressDo{mario.saltar()}
+//		keyboard.space().onPressDo{game.width(game.width()+1)}
 		keyboard.enter().onPressDo{game.say(mario, "tengo " + mario.monedas() + " monedas!!!")}
 		
 		game.onTick(1000, "aparece moneda",{self.aparecerMoneda()})
