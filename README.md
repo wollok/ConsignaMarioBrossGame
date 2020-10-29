@@ -2,9 +2,9 @@
 
 **Ejemplo completo y simple de las funcionalidades de Wollok Game**
 
-![](CapturaMario.png)
+![Presentacion](CapturaMario.png)
 
-### El problema básico
+## El problema básico
 
 Mario se dedica a juntar monedas. Cuando agarra una acumula su valor y cuando se le pregunta por las monedas, dice cuanto acumuló.
 
@@ -14,7 +14,8 @@ Monedas puede haber muchas, los valores posibles son $1, $5 y $10.
 - Hacer un test en el que junte una moneda de cada valor, y verificar que siga funcionando a medida que se agregan funcionalidades visuales.
 
 
-### Mario 
+**Mario**
+  
 *addVisual(visual), image(), position(), start()*
 
 - Crear un objeto que represente el juego y definir los métodos indispensables para que mario pueda ser visualizado en la pantalla. Que se le pueda pedir que cambie su posición desde la consola.
