@@ -25,6 +25,7 @@ Monedas puede haber muchas, los valores posibles son $1, $5 y $10.
 .
 
 **Mario interactivo**
+
 *addVisualCharacter(visual), position(position)*
 
 - Modificar la solución para que se ejecute desde un programa (*.wprg) y que mario se mueva a partir del teclado, mediante las flechas.
@@ -32,6 +33,7 @@ Monedas puede haber muchas, los valores posibles son $1, $5 y $10.
 .
 
 **Las monedas**
+
 *onTick(tiempo,nombre,accion), width(), heigth()* 
 
 - Hacer que con intervalo de un segundo, se genere una nueva moneda y aparezca en la pantalla. Que sus posiciones y valores sean aleatorios. Contemplar que las monedas de diferente valor tengan distinto aspecto visual.
@@ -39,6 +41,7 @@ Monedas puede haber muchas, los valores posibles son $1, $5 y $10.
 .
 
 **Agarrar las monedas**
+
 *onCollideDo(visual,accion), removeVisual(visual)*
 
 - Representar que cuando Mario se encuentra con una moneda, la agarra, acumulando su valor, y la moneda desaparece de la pantalla.
@@ -46,12 +49,14 @@ Monedas puede haber muchas, los valores posibles son $1, $5 y $10.
 .
 
 **Saltos**
+
 *onPressDo(acccion), schedule(tiempo, accion)*
 - Permitir interactuar con el teclado, de manera que al presionar una tecla, Mario salte una par de casillas y enseguida vuelva a caer()
 
 .
 
 **El tablero de juego**
+
 *heigth(celdas), width(celdas), title(descripcion), say(visual,leyenda)*
 
 - Ampliar el tamaño de la pantalla, agregar una imagen de fondo, colocar un nombre al juego. 
