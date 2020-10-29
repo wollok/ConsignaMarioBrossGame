@@ -5,7 +5,6 @@ object mario {
 	var monedas = 0
 	
 	method agarrar(moneda) {
-		
 		monedas += moneda.valor()
 		game.removeVisual(moneda)
 	}
@@ -37,12 +36,9 @@ object mario {
 }
 
 
-
-
 object juego {
 	
 	method iniciar() {
-		
 		game.height(10)
 		game.width(15)
 		game.title("Mario PdeP")
@@ -50,13 +46,11 @@ object juego {
 		game.addVisualCharacter(mario)
 		
 		keyboard.space().onPressDo{mario.saltar()}
-//		keyboard.space().onPressDo{game.width(game.width()+1)}
-		keyboard.enter().onPressDo{game.say(mario, "tengo " + mario.monedas() + " monedas!!!")}
+		keyboard.enter().onPressDo{game.say(mario, "tengo " + mario.monedas().toString() + " monedas!!!")}
+		keyboard.x().onPressDo{game.stop()}
 		
 		game.onTick(1000, "aparece moneda",{self.aparecerMoneda()})
-		
 		game.onCollideDo(mario,{moneda => mario.agarrar(moneda)} )
-		
 		game.start()
 	}
 	
@@ -69,17 +63,12 @@ object juego {
 				position = game.at(x,y)
 			)
 		)
-		
 	}
-	
 }
-
 
 class Moneda {
 	var property position = game.center()
 	var property valor
 	
-	method image() = "moneda" + valor + ".png"
-	
-	
+	method image() = "moneda" + valor.toString() + ".png"
 } 

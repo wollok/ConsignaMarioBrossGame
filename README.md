@@ -1,7 +1,15 @@
 **Mario Bross Game**
 
-
 *Ejemplo completo y simple de las funcionalidades de Wollok Game*
+
+.
+
+**Forma de uso**
+
+-Mover a Mario con las flechas del teclado y pasar por encima de las monedas para juntarlas 
+-Presionar <Espacio> para saltar
+-Presionar <Enter> para ver cuantas monedas juntó
+-Presionar <x> para salir
 
 .
 
@@ -57,10 +65,11 @@ Monedas puede haber muchas, los valores posibles son $1, $5 y $10.
 
 **El tablero de juego**
 
-*heigth(celdas), width(celdas), title(descripcion), say(visual,leyenda)*
+*heigth(celdas), width(celdas), title(descripcion), say(visual,leyenda), stop()*
 
 - Ampliar el tamaño de la pantalla, agregar una imagen de fondo, colocar un nombre al juego. 
 - Hacer que cuando se presiona una tecla, Mario informe cuánto tiene de monedas.
+- Agregar una tecla para terminar el juego.
 
 .
 
@@ -78,13 +87,43 @@ Monedas puede haber muchas, los valores posibles son $1, $5 y $10.
 **Implementación**
 
 ~~~Wollok
+import wollok.game.*
+
+object juego {
+	
+	method iniciar() {
+		game.height(10)
+		game.width(15)
+		game.title("Mario PdeP")
+		game.boardGround("FondoMario.jpg")
+		game.addVisualCharacter(mario)
+		
+		keyboard.space().onPressDo{mario.saltar()}
+		keyboard.enter().onPressDo{game.say(mario, "tengo " + mario.monedas().toString() + " monedas!!!")}
+		keyboard.x().onPressDo{game.stop()}
+		
+		game.onTick(1000, "aparece moneda",{self.aparecerMoneda()})
+		game.onCollideDo(mario,{moneda => mario.agarrar(moneda)} )
+		game.start()
+	}
+	
+	method aparecerMoneda() {
+		const x = (0..game.width()-1).anyOne()
+		const y = (0..game.height()-1).anyOne()
+		game.addVisual( 
+			new Moneda(
+				valor = [1,5,10].anyOne(),
+				position = game.at(x,y)
+			)
+		)
+	}
+}
 
 object mario {
 	var position = game.origin()
 	var monedas = 0
 	
 	method agarrar(moneda) {
-		
 		monedas += moneda.valor()
 		game.removeVisual(moneda)
 	}
@@ -115,51 +154,10 @@ object mario {
 	method image() = "marioBross.png"
 }
 
-
-
-
-object juego {
-	
-	method iniciar() {
-		
-		game.height(10)
-		game.width(15)
-		game.title("Mario PdeP")
-		game.boardGround("FondoMario.jpg")
-		game.addVisualCharacter(mario)
-		
-		keyboard.space().onPressDo{mario.saltar()}
-//		keyboard.space().onPressDo{game.width(game.width()+1)}
-		keyboard.enter().onPressDo{game.say(mario, "tengo " + mario.monedas() + " monedas!!!")}
-		
-		game.onTick(1000, "aparece moneda",{self.aparecerMoneda()})
-		
-		game.onCollideDo(mario,{moneda => mario.agarrar(moneda)} )
-		
-		game.start()
-	}
-	
-	method aparecerMoneda() {
-		const x = (0..game.width()-1).anyOne()
-		const y = (0..game.height()-1).anyOne()
-		game.addVisual( 
-			new Moneda(
-				valor = [1,5,10].anyOne(),
-				position = game.at(x,y)
-			)
-		)
-		
-	}
-	
-}
-
-
 class Moneda {
 	var property position = game.center()
 	var property valor
 	
-	method image() = "moneda" + valor + ".png"
-	
-	
+	method image() = "moneda" + valor.toString() + ".png"
 } 
 ~~~
