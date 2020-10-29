@@ -47,7 +47,7 @@ object juego {
 		
 		keyboard.space().onPressDo{mario.saltar()}
 		keyboard.enter().onPressDo{game.say(mario, "tengo " + mario.monedas().toString() + " monedas!!!")}
-		keyboard.x().onPressDo{game.stop()}
+//		keyboard.x().onPressDo{game.stop()}
 		
 		game.onTick(1000, "aparece moneda",{self.aparecerMoneda()})
 		game.onCollideDo(mario,{moneda => mario.agarrar(moneda)} )
